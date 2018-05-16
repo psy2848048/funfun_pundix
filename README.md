@@ -5,7 +5,7 @@
 
 ## 개괄도
 
-![img/funding.png](ing/funding.png)
+![img/funding.png](img/funding.png)
 
 ## 개발 로드맵
 
