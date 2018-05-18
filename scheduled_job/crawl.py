@@ -1,5 +1,6 @@
 from decimal import Decimal
 from datetime import datetime, timedelta
+import sys
 import traceback
 
 from steem import Steem
@@ -70,6 +71,9 @@ class SteemPosting(object):
         return candidate_perlinks
 
     def getValidPermlinks(self, permlinks):
+        if len(permlinks) < 1:
+            return []
+
         conn = self.connObj.getConnection()
         cursor = conn.cursor()
 
@@ -150,7 +154,15 @@ class SteemPosting(object):
 if __name__ == "__main__":
     st = SteemPosting()
     permlinks = st.getRecentPaidOutPostPermlinks()
+    if len(permlinks) < 1:
+        print("Nothing to record")
+        sys.exit(0)
+
     filtered_permlinks = st.getValidPermlinks(permlinks)
+    if len(filtered_permlinks) < 1:
+        print("Nothing to record")
+        sys.exit(0)
+
     result = st.getCalcDataFromPermlinks(filtered_permlinks)
     print("DB recording...")
     st.insertPostRecord(result)
