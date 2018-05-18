@@ -36,18 +36,12 @@ class Config(object):
 class ProdConfig(Config):
     PORT = 443
     HOST = ''
-    #SESSION_COOKIE_DOMAIN=".ciceron.me"
-    #SESSION_COOKIE_PATH="/"
 
 
 class DevConfig(Config):
     PORT = 5001
     HOST = ''
-    #SESSION_COOKIE_DOMAIN=".ciceron.me"
-    #SESSION_COOKIE_PATH="/"
 
 class TestConfig(Config):
     HOST = ''
-    #SESSION_COOKIE_DOMAIN=".ciceron.me"
-    #SESSION_COOKIE_PATH="/"
 
