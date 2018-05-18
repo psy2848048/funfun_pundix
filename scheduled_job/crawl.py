@@ -152,4 +152,5 @@ if __name__ == "__main__":
     permlinks = st.getRecentPaidOutPostPermlinks()
     filtered_permlinks = st.getValidPermlinks(permlinks)
     result = st.getCalcDataFromPermlinks(filtered_permlinks)
+    print("DB recording...")
     st.insertPostRecord(result)
