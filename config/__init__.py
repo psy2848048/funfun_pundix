@@ -25,12 +25,10 @@ class Config(object):
     #: Swagger
     #: SQLAlchemy, DB
     DATABASE_CONFIG = {
-        'driver': '',
         'host': '',
         'dbname': '',
-        'user': 'root',
+        'user': '',
         'password': '',
-        'port': 3306
     }
 
     STEEM_POSTING_KEY = ['']
@@ -47,10 +45,6 @@ class DevConfig(Config):
     HOST = ''
     #SESSION_COOKIE_DOMAIN=".ciceron.me"
     #SESSION_COOKIE_PATH="/"
-
-    #: STEEM (계정: ciceron)
-    STEEM_POSTING_KEY = ['5Jhz19vXUKHRVWsxBQpd58VdHvCSXAxNHW2rri645G7pWxy1onx']
-
 
 class TestConfig(Config):
     HOST = ''
