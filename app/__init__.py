@@ -12,12 +12,7 @@ app.template_folder = 'static/front'
 #: Configurations
 import configs
 
-if os.environ.get('PURPOSE') == 'PROD':
-    app.config.from_object(configs.ProdConfig)
-elif os.environ.get('PURPOSE') == 'DEV':
-    app.config.from_object(configs.DevConfig)
-else:
-    app.config.from_object(configs.Config)
+app.config.from_object(configs.Config)
 
 #: Swagger
 #Swagger(app)

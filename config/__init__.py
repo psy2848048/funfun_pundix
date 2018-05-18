@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from datetime import timedelta
+import json
 import os
 
 
@@ -24,12 +25,8 @@ class Config(object):
 
     #: Swagger
     #: SQLAlchemy, DB
-    DATABASE_CONFIG = {
-        'host': '',
-        'dbname': '',
-        'user': '',
-        'password': '',
-    }
+    with open('env.json') as f:
+        DATABASE_CONFIG = json.load(f)
 
     STEEM_POSTING_KEY = ['']
 
