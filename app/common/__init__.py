@@ -1,5 +1,5 @@
 import pymysql
-import .config
+import config
 
 
 def getConnection():
