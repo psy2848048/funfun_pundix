@@ -154,7 +154,7 @@ class PurchasePundix(object):
         print("|------------|---------------------|---------------------|")
 
         for item in user_list:
-            print("|   {}    |     {}     |    {}     |".format(item['user_id'], "{0:.2f}%".format(item['rate'] * 100), item['sum']))
+            print("|   @{}    |     {}     |    {}     |".format(item['user_id'], "{0:.2f}%".format(item['rate'] * 100), item['sum']))
 
     def input(self, purchase_type, amount):
         if purchase_type == "purchase":

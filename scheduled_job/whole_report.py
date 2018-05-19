@@ -42,7 +42,7 @@ class BalanceReport(object):
         print("|------------|------------------|-------------------|------------------|")
 
         for item in ret:
-            print("|   {}    |     {}     |    {}     |     {}      |".format(item['user_id'], item['income'], abs(item['withdraw']), item['balance']))
+            print("|   @{}    |     {}     |    {}     |     {}      |".format(item['user_id'], item['income'], abs(item['withdraw']), item['balance']))
 
 
 if __name__ == "__main__":
