@@ -11,7 +11,7 @@ from dbConn import DBActions
 class SteemPosting(object):
     def __init__(self):
         self.steem = Steem()
-        self.account = "bryanrhee"
+        self.account = "funfund"
 
         overview = self.steem.get_reward_fund("post")
         steem_prices = self.steem.get_current_median_history_price()
