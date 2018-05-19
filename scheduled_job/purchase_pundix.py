@@ -149,6 +149,12 @@ class PurchasePundix(object):
             conn.commit()
             self.connObj.closeConnection(conn)
 
+    def report(self, user_list):
+        print("|     ID     |    SBD 기여비율     |     배당 PundiX     |")
+        print("|------------|---------------------|---------------------|")
+
+        for item in user_list:
+            print("|   {}    |     {}     |    {}     |".format(item['user_id'], "{0:.2f}%".format(item['rate'] * 100), item['sum']))
 
     def input(self, purchase_type, amount):
         if purchase_type == "purchase":
@@ -159,6 +165,9 @@ class PurchasePundix(object):
         elif purchase_type == "interest":
             user_list = self._checkInterestAmount(amount)
             self._dbInput(purchase_type, [], 0, amount, user_list)
+
+        self.report(user_list)
+
 
 
 if __name__ == "__main__":
