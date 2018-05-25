@@ -95,7 +95,7 @@ class SteemPosting(object):
         queryRes = [ item['permlink'] for item in ret ]
         for unit in permlinks:
             if unit not in queryRes:
-                valid_permlinks,append(unit)
+                valid_permlinks.append(unit)
 
         self.connObj.closeConnection(conn)
 
