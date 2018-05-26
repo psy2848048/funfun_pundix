@@ -66,6 +66,7 @@ class PurchasePundix(object):
         query_whole = """
             SELECT sum(pundix_share) as whole_amount
             FROM pundix_users
+            WHERE DATE_FORMAT(executed_at, '%Y%m') < DATE_FORMAT(CURRENT_TIMESTAMP, '%Y%m')
         """
         cursor.execute(query_whole)
         current_whole_amount = cursor.fetchone()['whole_amount']
@@ -73,6 +74,7 @@ class PurchasePundix(object):
         query_individual = """
             SELECT user_id, sum(pundix_share) as individual_sum
             FROM pundix_users
+            WHERE DATE_FORMAT(executed_at, '%Y%m') < DATE_FORMAT(CURRENT_TIMESTAMP, '%Y%m')
             GROUP BY user_id
         """
         cursor.execute(query_individual)
