@@ -28,7 +28,8 @@ class SteemPosting(object):
 
     def _calcContribution(self, post_data):
         voters = post_data['active_votes']
-        total_payout_value = Decimal(post_data['total_payout_value'].replace(" SBD", "")) / 2
+        print(post_data['total_payout_value'])
+        total_payout_value = Decimal(post_data['total_payout_value'].replace(" SBD", "").replace(" STEEM", "") ) / 2
 
         voter_lists = []
         net_rshare = 0
@@ -57,15 +58,17 @@ class SteemPosting(object):
     def getRecentPaidOutPostPermlinks(self):
         # 이미 보상 받은 포스팅 목록 가져요기
 
-        ret = self.steem.get_blog(self.account, entry_id=0, limit=10)
+        ret = self.steem.get_blog(self.account, entry_id=0, limit=12)
 
         candidate_perlinks = []
         for unit_post in ret:
             created = datetime.strptime(unit_post['comment']['created'], '%Y-%m-%dT%H:%M:%S')
             print(created)
-            if created + timedelta(days=7) < datetime.now():
+            if created + timedelta(days=7, hours=12) < datetime.now():
                 permlink = unit_post['comment']['root_permlink']
-                candidate_perlinks.append(permlink)
+                if len(permlink) > 0:
+                    candidate_perlinks.append(permlink)
+
                 print(permlink)
 
         return candidate_perlinks
@@ -165,4 +168,5 @@ if __name__ == "__main__":
 
     result = st.getCalcDataFromPermlinks(filtered_permlinks)
     print("DB recording...")
+    print(result)
     st.insertPostRecord(result)
