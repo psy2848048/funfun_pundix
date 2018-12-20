@@ -49,7 +49,7 @@ class SteemPosting(object):
         print("Total payout : {} SBD".format(total_payout_value))
 
         return {
-                     "permlink": post_data['root_permlink']
+                     "permlink": post_data['root_permlink'] if 'root_permlink' in unit_post['comment'] else unit_post['comment']['permlink']
                    , "total_sbd":total_payout_value
                    , "voters": voter_lists
                    , "created": post_data['created']
@@ -65,7 +65,7 @@ class SteemPosting(object):
             created = datetime.strptime(unit_post['comment']['created'], '%Y-%m-%dT%H:%M:%S')
             print(created)
             if created + timedelta(days=7, hours=12) < datetime.now():
-                permlink = unit_post['comment']['root_permlink']
+                permlink = unit_post['comment']['root_permlink'] if 'root_permlink' in unit_post['comment'] else unit_post['comment']['permlink']
                 if len(permlink) > 0:
                     candidate_perlinks.append(permlink)
 
